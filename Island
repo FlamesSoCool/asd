@@ -1,0 +1,119 @@
+-- DEPOSIT SCRIPT FOR VENDINGS
+--[[
+game.Players.PlayerAdded:Connect(function(plr)
+	repeat wait() until plr.Character do end
+	local args = {
+	    [1] = {
+	        ["accessRank"] = 3,
+	        ["player"] = plr
+	    }
+	}
+	
+	game:GetService("ReplicatedStorage").rbxts_include.node_modules:FindFirstChild("@rbxts").net.out._NetManaged.CLIENT_CHANGE_ISLAND_ACCESS_LEVEL:InvokeServer(unpack(args))
+end)
+
+--]]
+
+coroutine.wrap(function()
+	local bb=game:service'VirtualUser'
+	game:service'Players'.LocalPlayer.Idled:connect(function()
+		bb:CaptureController()
+		bb:ClickButton2(Vector2.new())
+	end)
+end)()
+
+function GRAB_ISLAND()
+    for i,v in pairs(game:GetService("Workspace").Islands:GetChildren()) do
+        if v:FindFirstChild('Root') and (v.Root.Position - game.Players.LocalPlayer.Character.PrimaryPart.Position).Magnitude <= 10000 then
+            return v
+        end
+    end
+end
+
+local CurrentIsland = GRAB_ISLAND()
+print(CurrentIsland)
+if CurrentIsland then else return end
+
+
+if game:GetService("ReplicatedStorage").rbxts_include.node_modules["@rbxts"].net.out._NetManaged:FindFirstChild("uQGwRfFzhxuxzz/WmfeeyHKfti") then else return end
+
+
+print("Loaded")
+
+----[[
+while wait() do
+	for i,v in pairs(CurrentIsland.Blocks:GetChildren()) do
+		if v:IsA('Part') and v.Name:match("vendingMachine") then
+
+			local args = {
+				[1] = "ED16EF2A-1329-492B-AD4D-3C96EC5239F6",
+				[2] = {
+					[1] = {
+						["vendingMachine"] = v
+					}
+				}
+			}
+		
+			game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("node_modules"):WaitForChild("@rbxts"):WaitForChild("net"):WaitForChild("out"):WaitForChild("_NetManaged"):WaitForChild("uQGwRfFzhxuxzz/homehzdaqIeswexlnzv"):FireServer(unpack(args))
+		
+			local args = {
+				[1] = {
+					["vendingMachine"] = v
+				}
+			}
+		
+			game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("node_modules"):WaitForChild("@rbxts"):WaitForChild("net"):WaitForChild("out"):WaitForChild("_NetManaged"):WaitForChild("uQGwRfFzhxuxzz/ehkjxcqnyeDdfRutnXthoBfsijltlpnvmZzfj"):FireServer(unpack(args))
+		
+			local args = {
+				[1] = {
+					["vendingMachine"] = v
+				}
+			}
+		
+			game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("node_modules"):WaitForChild("@rbxts"):WaitForChild("net"):WaitForChild("out"):WaitForChild("_NetManaged"):WaitForChild("uQGwRfFzhxuxzz/fataUso"):FireServer(unpack(args))
+		
+			local args = {
+				[1] = "CF67163D-7FAB-467A-B1CE-6D8831DDFD28",
+				[2] = {
+					[1] = {
+						["vendingMachine"] = v
+					}
+				}
+			}
+			
+			game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("node_modules"):WaitForChild("@rbxts"):WaitForChild("net"):WaitForChild("out"):WaitForChild("_NetManaged"):WaitForChild("uQGwRfFzhxuxzz/ziDEKukpjqow"):FireServer(unpack(args))
+		
+		
+					-- DEPOSIT
+					wait()
+					repeat wait()
+						local args = {
+							[1] = "E2FF2149-F6C4-491E-BE58-39B15D3DF806",
+							[2] = { 
+								[1] = {
+									["accountType"] = "SHARED", 
+									["transferType"] = "WITHDRAWAL", 
+									["amount"] = 1500000000
+								}
+							}
+						}
+						
+						game:GetService("ReplicatedStorage").rbxts_include.node_modules:FindFirstChild("@rbxts").net.out._NetManaged.TransactionBankBalance:FireServer(unpack(args))
+		
+						local args = {
+							[1] = "65275E7D-16B7-483B-9981-44DE61BFB01E",
+							[2] = {
+								[1] = {
+									["vendingMachine"] = v,
+									["player_tracking_category"] = "join_from_web",
+									["amount"] = 1000000000
+								}
+							}
+						}
+			game:GetService("ReplicatedStorage"):WaitForChild("rbxts_include"):WaitForChild("node_modules"):WaitForChild("@rbxts"):WaitForChild("net"):WaitForChild("out"):WaitForChild("_NetManaged"):WaitForChild("uQGwRfFzhxuxzz/WmfeeyHKfti"):FireServer(unpack(args))
+					until not v:FindFirstChild("CoinBalance") or (v:FindFirstChild("CoinBalance") and v.CoinBalance.Value == 5000000000) do end
+		end
+	end
+	print('Completed')
+end
+--]]
